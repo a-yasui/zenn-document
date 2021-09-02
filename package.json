@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/a-yasui/zenn-document#readme",
   "dependencies": {
+    "yarn": "^1.22.11",
     "zenn-cli": "^0.1.50"
   }
 }
