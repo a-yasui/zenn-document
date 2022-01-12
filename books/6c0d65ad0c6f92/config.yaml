@@ -7,7 +7,7 @@ price: 0 # 有料の場合200〜5000
 chapters:
   - topics
   - namespace-at-model
-  - how-to-create-development-env
+#  - how-to-create-development-env
   - validation
   - order-by-created-at
   - use_dto
