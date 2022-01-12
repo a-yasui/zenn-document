@@ -12,3 +12,6 @@ chapters:
   - order-by-created-at
   - use_dto
   - query_scope
+  - look-up-table
+  - nested-return-value
+  - right-is-big
