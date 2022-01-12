@@ -2,7 +2,8 @@
 title: '[PG] Look up Table'
 ---
 
-文字列比較のみの if~elseif~elseif~ が続く処理や、switch文での処理は、連想配列でテーブルを作成して、そのテーブルを見るようにしたほうが見やすくなる。
+文字列比較のみの `if~elseif~elseif~`が続く処理や、switch文での処理は冗長になりやすいです。
+複数行の elseif を使う時は、連想配列でテーブルを使用するほうが、後で条件を追加しやすくなり良くなります。
 
 
 参考 : [Instead of writing repetitive `else if` statements -- Samuel Štancl -- twitter.com](https://twitter.com/samuelstancl/status/1272822439689555969)
