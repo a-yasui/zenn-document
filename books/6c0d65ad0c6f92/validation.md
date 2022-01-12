@@ -6,27 +6,8 @@ title: "[Laravel] 入力値チェックは誰がする？"
 
 # Better Pattern
 
-## コントローラーで処理
-
 ```php
-namespace App\Http\Controllers;
-
-class BlogController extends Controller {
-	public function create(\App\Http\Request\CreateNewArticleRequest $request){
-		$article = new \App\Models\Article();
-		$article->subject = $request->getSubject();
-		throw_if( $article->save() === false, new DatabaseSaveErrorException($article) );
-		return redirect()->route('user.blog.write', ['article_id' = $article]);
-	}
-}
-```
-
-Requests はこんな感じ。
-
-```php
-namespace App\Http\Request;
-
-class CreateNewArticleRequest extends \Illuminate\Foundation\Http\FormRequest
+class CreateNewArticleRequest extends Request
 {
 	public function rules(){
 		return [
