@@ -11,3 +11,4 @@ chapters:
   - validation
   - order-by-created-at
   - use_dto
+  - query_scope

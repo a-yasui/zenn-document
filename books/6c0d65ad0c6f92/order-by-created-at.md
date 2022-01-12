@@ -1,5 +1,5 @@
 ---
-title: "OrderBy CreatedAt ?"
+title: "[Laravel] OrderBy CreatedAt ?"
 ---
 
 Eloquent でソートした状態でモデルデータを取得するのに `orderBy` メソッドを使う。そのときに都合良いのが Eloquent が使う `created_at` でソートをする事だ。しかし場合によっては `create_at` みたいに **Eloquent 標準ではない** カラム名になっている事がある。

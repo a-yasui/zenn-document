@@ -1,5 +1,5 @@
 ---
-title: "NameSpaceはあらかじめ変更しておく"
+title: "[Laravel] NameSpaceはあらかじめ変更しておく"
 ---
 
 Laravel のバージョンアップで Namespace が少し変わることがある。例えば Eloquent の保存場所が `App\\` だったのに対して、laravel 5.6 あたりからは `App\\Model\\` となった。

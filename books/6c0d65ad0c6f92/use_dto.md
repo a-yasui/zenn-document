@@ -1,5 +1,5 @@
 ---
-title: "Use DTOs"
+title: "[PG] Use DTOs"
 ---
 
 極端に引数が多くなると見づらくなり、使う変数が多くなります。これにより混乱を起こしやすくなるので、構造体を作成してどうにかやりくりをする方法があります。
@@ -9,7 +9,7 @@ title: "Use DTOs"
 参考: [Use Data Transfer Objects (DTOs). Samuel Štancl
  -- twitter.com](https://twitter.com/samuelstancl/status/1272822466528845825)
 
-# ✗
+# ✗ woozy
 
 ```php
 public function log(string $message, $url, $route_name, $route_data, $campaign_code, $traffic_source, $referer, $user_id, $visitor_id, $timestamp)
@@ -18,7 +18,7 @@ public function log(string $message, $url, $route_name, $route_data, $campaign_c
 }
 ```
 
-# ○
+# ○ best
 
 ```php
 public function log(Visit $visit)
