@@ -9,4 +9,4 @@ chapters:
   - namespace-at-model
   - how-to-create-development-env
   - validation
-  - example2
+  - order-by-created-at
