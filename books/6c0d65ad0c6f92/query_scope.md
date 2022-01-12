@@ -2,7 +2,11 @@
 title: "[Laravel] Query Scope"
 ---
 
-`where` 句で並べて条件を絞ってデータの取得をする。その特にパターンがあるときに使いまわしを頻繁にする。都度コピペしていると、いつか間違えるだろうからカスタマイズをした `where~~` Scope を Eloquent に追加する。
+`where` 句で並べて条件を絞ってデータの取得をします。
+その特にパターンがあるとき、その `where 文`は使いまわしを頻繁にします。
+都度コピペしていると、変更があった時に間違える可能性が高いです。
+ですので、カスタマイズをした `where~~` Scope を Eloquent に追加する方法を取るのが良いです。
+
 
 参考 : [Create query scopes for complex where()s. -- Samuel Štancl -- twitter.com](https://twitter.com/samuelstancl/status/1272826431609933825)
 

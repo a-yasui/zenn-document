@@ -2,17 +2,19 @@
 title: "[Laravel] NameSpaceはあらかじめ変更しておく"
 ---
 
-Laravel のバージョンアップで Namespace が少し変わることがある。例えば Eloquent の保存場所が `App\\` だったのに対して、laravel 5.6 あたりからは `App\\Model\\` となった。
+Laravel のバージョンアップで Namespace が少し変わることがあります。
+例えば Eloquent の保存場所が `App\\` だったのに対して、laravel のバージョン 5.6 以降は `App\\Model\\` となっています。
 
-問題として、モデルとして使う場合においている事がある。この場合のモデルは、データとメソッドを合わせたい時に使うもので、データソースが RDB の Eloquent だけに限らない。例えば JSON レスポンスや JSON/CSV に書き出し出すためのクラスなどを置く場所等がある。この、すでに使っている Namespace に対して機能追加がされた時に対応はできるがゴチャゴチャになってしまう事である。
+これの問題として、自身が追加した `App\\Model` と競合してしまう事です。
+起きてしまったことは仕方がないとして、起きないためには、初めから別の namespace で作業する事です。
 
-## Example
+## composer.json での設定
 
-あらかじめアプリケーション名を Namespace のトップ名にしておき、Laravel部分はすべて `App` 以下に置く。
+まず Laravel 部分はすべて `App` 直下に置きます。そして `app` ディレクトリと同じ階層に、任意の名前のディレクトリを作成して、composer.json の psr-4 に追加してやります。
 
 例えば Hoge アプリケーションとした時 `composer.json` の `psr-4` で namespace を追加する方法がある。
 
-```json
+```json:composer.json
 {
 	"autoload": {
 		"psr-4": {
