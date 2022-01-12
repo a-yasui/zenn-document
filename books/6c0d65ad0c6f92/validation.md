@@ -8,8 +8,7 @@ title: "入力値チェックは誰がする？"
 
 ## コントローラーで処理
 
-```
-<?php
+```php
 namespace App\Http\Controllers;
 
 class BlogController extends Controller {
@@ -24,9 +23,7 @@ class BlogController extends Controller {
 
 Requests はこんな感じ。
 
-```
-<?php
-
+```php
 namespace App\Http\Request;
 
 class CreateNewArticleRequest extends \Illuminate\Foundation\Http\FormRequest
