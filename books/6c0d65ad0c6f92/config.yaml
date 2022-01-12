@@ -10,3 +10,4 @@ chapters:
   - how-to-create-development-env
   - validation
   - order-by-created-at
+  - use_dto
