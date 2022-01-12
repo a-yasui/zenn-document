@@ -4,6 +4,8 @@ title: "[Laravel] Query Scope"
 
 `where` 句で並べて条件を絞ってデータの取得をする。その特にパターンがあるときに使いまわしを頻繁にする。都度コピペしていると、いつか間違えるだろうからカスタマイズをした `where~~` Scope を Eloquent に追加する。
 
+参考 : [Create query scopes for complex where()s. -- Samuel Štancl -- twitter.com](https://twitter.com/samuelstancl/status/1272826431609933825)
+
 ## Old
 
 ```php
