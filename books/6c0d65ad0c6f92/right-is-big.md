@@ -19,11 +19,12 @@ title: "[PG] Right is big"
 # ○ good
 
 ```php
+// php
 ( 100 <= $my_money && $my_money <= 200);
 ```
 
 ```python
-
+# Python
 if 100 <= my_money <= 200:
 	print "ok"
 ```

@@ -1,8 +1,9 @@
 ---
-title: "[Laravel] 入力値チェックは誰がする？"
+title: "[Laravel] validate in Request"
 ---
 
-ユーザが入力した値をチェックする機構としてバリデーションがあります。バリデーションは `\Validate::make()` みたいな使い方があります。それより Request クラスを継承したクラスに `rules()` メソッドを実装する方法が、コントローラー内に余計に書かなくてすむようになります。
+ユーザが入力した値をチェックする機構としてバリデーションがあります。
+バリデーションは `\Validate::make()` で使用する方法がありました。Laravel5以降では Request クラスを継承したクラスに `rules()` メソッドを実装する事で、コントローラー内に書かず、処理が見やすくなります。
 
 # Better Pattern
 
@@ -22,7 +23,7 @@ class CreateNewArticleRequest extends Request
 		];
 	}
 
-	public function getSubject()
+	public function getSubject(): string
 	{
 		return (string)($this->input('subject'));
 	}
