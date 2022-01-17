@@ -1,5 +1,5 @@
 title: "Laravel tips"
-summary: "注意して書いている所を書いていってます。"
+summary: "注意して書いている所を書いていってます。ラベルとして [PG] とあるのは言語・フレームワークによらない事、[Laravel] と書いているのは Laravel にのみ関係している部分です。"
 topics: ["php","laravel","programming"]
 published: true
 price: 0 # 有料の場合200〜5000
