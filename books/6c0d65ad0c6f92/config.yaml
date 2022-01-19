@@ -10,6 +10,7 @@ chapters:
   - namespace-at-model
 #  - how-to-create-development-env
   - validation
+  - do-not-use-env
   - order-by-created-at
   - use_dto
   - query_scope
