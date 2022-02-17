@@ -8,7 +8,7 @@ chapters:
   - topics
   - 12factor
   - namespace-at-model
-#  - how-to-create-development-env
+ - how-to-create-development-env
   - validation
   - do-not-use-env
   - order-by-created-at
