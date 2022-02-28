@@ -1,12 +1,15 @@
 ---
-title: "[Laravel] Create model methods for business logic / Create Action classes"
+title: "[Laravel]Create model methods for business logic,Create Action classes"
 ---
 
 コントローラーに記述するコード量は少ないのに越したことはありません。しかし、例えば、注文に応じて請求用のデータを挿入する処理が必要になり、コントローラーに書いてしまうことは避けたいです。
 
 そういうときは注文モデル（Order）にメソッドを追加して処理を書いてしまうことです。
 
-参考 : [Create model methods for business logic -- Samuel Štancl -- twitter.com](https://twitter.com/samuelstancl/status/1272822448145272832)
+参考 :
+
+- [Create model methods for business logic -- Samuel Štancl -- twitter.com](https://twitter.com/samuelstancl/status/1272822448145272832)
+- [Create action classes -- Samuel Štancl -- twitter.com](https://twitter.com/samuelstancl/status/1272822450137546753)
 
 
 ## ✗ bad
