@@ -3,7 +3,7 @@ title: "Homestead で PHP8.1 の XDebug を使う方法"
 emoji: "✨"
 type: "tech" # tech: 技術記事 / idea: アイデア
 topics: ['php']
-published: false
+published: true
 ---
 
 基本的には [Laravel Homestead + PhpStormでXdebugを有効化する -- qiita.com](https://qiita.com/_hiro_dev/items/07e87a7d95bdaea98ad4) の手順で動きます。
