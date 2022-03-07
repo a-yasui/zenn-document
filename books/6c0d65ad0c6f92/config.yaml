@@ -19,3 +19,5 @@ chapters:
   - right-is-big
   - make-a-base-class
   - seeder-is-not-testing
+  - template-save-path-is-url
+  - create-model-methods-for-business-logic.md
