@@ -1,5 +1,5 @@
 ---
-title: "Laravel 12 Tips"
+title: "Laravel DB Migration 12 Tips"
 emoji: "💬"
 type: "tech" # tech: 技術記事 / idea: アイデア
 topics: ["laravel"]
