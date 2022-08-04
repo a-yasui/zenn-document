@@ -110,7 +110,7 @@ Migration の状態はコマンド `migrate:status` を実行して確認がで�
 # Timestamp 型のデフォルト値
 
 `$table->timestamp('review_date')->default('now')` は動きません。 `NOW()` は MySQL 等では動かないからです。
-`$table->timestamp('review_date`)->useCurrent()` を使うと良いみたいです。
+`$table->timestamp('review_date')->useCurrent()` を使うと良いみたいです。
 
 もし更新した時を保持する時は `useCurrentOnUpdate()` を使うと良いみたいです。
 
