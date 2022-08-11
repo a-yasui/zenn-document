@@ -1,4 +1,10 @@
-# Ubuntu 22.04 のシステムフォントを変更する
+---
+title: "Ubuntu 22.04 のシステムフォントを変更する"
+emoji: "📝"
+type: "tech" # tech: 技術記事 / idea: アイデア
+topics: ["ubuntu"]
+published: false
+---
 
 日本語フォントが基本 DroidSansFallback になっているために、特定の漢字が中華フォント化するので、日本語を優先的に使うようにする。
 
