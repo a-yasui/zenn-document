@@ -1,12 +1,8 @@
----
-title: "Ubuntu 22.04 のシステムフォントを変更する"
-emoji: "🎃"
-type: "tech" # tech: 技術記事 / idea: アイデア
-topics: ["ubuntu"]
-published: true
----
+# Ubuntu 22.04 のシステムフォントを変更する
 
 日本語フォントが基本 DroidSansFallback になっているために、特定の漢字が中華フォント化するので、日本語を優先的に使うようにする。
+
+フォントシステム自体は昔（いつ？）から変更はほぼないみたい。変更あったらちょっとつらい。
 
 # 対処
 
@@ -15,6 +11,8 @@ published: true
 1. */etc/fonts/local.conf* に下記の xml を入れる。
 
 ちょっとずらしてて、 *sans* と *serif* は明朝体、 *sans-serif* はゴシック体という状態にしている。
+
+font.dtd はおそらく [chromium プロジェクトにある fontconfig -- chromium.googlesource.com](https://chromium.googlesource.com/external/fontconfig/+/ba15d41bdc0f6e949089d71208f8afdc99e1d19b/fonts.dtd) を参考にした。
 
 ```xml
 <?xml version="1.0"?>
