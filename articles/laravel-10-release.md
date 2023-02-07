@@ -54,6 +54,21 @@ $result = Process::run('ls -la');
 return $result->output();
 ```
 
+## 実装変更に伴う新機能
+
+`DB::raw` が強化されました。説明が難しいので [該当の pull-request -- github.com](https://github.com/laravel/framework/pull/44784) と [ツイート -- twitter.com](https://twitter.com/tobias_petry/status/1622577764682407936)を見てください。
+
+こんな感じみたいです。
+
+```
+// ~9.x
+DB::table('table')
+    ->when(isPostgreSQL(), fn ($query) => $query->select(DB::raw('coalesce("user", "admin") AS "value"')))
+    ->when(isMySQL(), fn ($query) => $query->select(DB::raw('coalesce(`user`, `admin`) AS `value`')))
+
+// 10.x~
+DB::table('table')->select(new Alias(new Colalesce(['user', 'admin']), 'count'));
+```
 
 # アップグレード
 
