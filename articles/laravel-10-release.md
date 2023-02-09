@@ -3,10 +3,12 @@ title: "Laravel 10 Release/Upgrade memo"
 emoji: "😺"
 type: "tech" # tech: 技術記事 / idea: アイデア
 topics: ["php","laravel"]
-published: false
+published: true
 ---
 
-364日ぶりのメジャーアップデートである Laravel10 がリリースされま(す|した)。日本的には2023/02/08になります。サポートポリシーとして、2023/02/07 までバグ修正サポートとなり、2024/02/06 までセキュリティサポートの期限となります。
+ほぼ一年ぶりのメジャーアップデートである Laravel10 がリリースされます。2023年の Q1 とのことで現時点（2023/02/09）はまだリリースされてません。[多分来週 -- twitter.com](https://twitter.com/taylorotwell/status/1622997899654176769)とテイラーさんは言っているので、2023/02/10日以降とか…？。
+
+そんなわけで、このメモ書きも気がついたら増えていきます。一応公式ドキュメントは公開されたので、これも公開。
 
 なお [名前的に Laravel X とは呼ばないでね --twitter.com/taylortwell](https://twitter.com/taylorotwell/status/1620807927715217409) って言ってます
 
