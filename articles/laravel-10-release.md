@@ -6,7 +6,7 @@ topics: ["php","laravel"]
 published: false
 ---
 
-364日ぶりのメジャーアップデートである Laravel10 がリリースされま(す|した)（2023/02/07）。日本的には2023/02/08になります。サポートポリシーとして、2023/02/07 までバグ修正サポートとなり、2024/02/06 までセキュリティサポートの期限となります。
+364日ぶりのメジャーアップデートである Laravel10 がリリースされま(す|した)。日本的には2023/02/08になります。サポートポリシーとして、2023/02/07 までバグ修正サポートとなり、2024/02/06 までセキュリティサポートの期限となります。
 
 なお [名前的に Laravel X とは呼ばないでね --twitter.com/taylortwell](https://twitter.com/taylorotwell/status/1620807927715217409) って言ってます
 
@@ -20,6 +20,23 @@ published: false
 - [A Look at What's Coming to Laravel 10 -- laravel-news.com](https://laravel-news.com/laravel-10)
 - [Laravel 10 Application Skeleton Code Will Have Native Type Declarations -- laravel-news.com](https://laravel-news.com/laravel-10-type-declarations)
 
+# ざっくり
+
+- [High] composer.json のアップデート
+- [Higt] PHP8.0 以下は未対応
+- [Medium] `\DB::raw` の仕様変更
+- [Medium] Eloquent Model の `$dates` の廃止
+- [Medium] Redis Cache tag の対応
+- [Medium] ServiceMock の仕様変更（ `expectsEvents`, `expectsJobs`, `expectsNotifications` の廃止の話）
+- [Medium] 多言語ディレクトリの変更(新規インストール時の話)
+- [Low] Validation Message で Closure 指定したときの変更
+- [Low] MonoLog3 対応
+- [Low] QueryException の Constructor 引数が変更
+- [Low] LateLimit の返り値変更
+- [Low] `Relation` クラスの `getBaseQuery` メソッド名変更
+- [Low] `Route::home` の廃止
+- [Low] `Bus::dispatch` のメソッド名変更
+- [Low] ULID カラム名変更
 
 # 大きな変更点
 
@@ -54,6 +71,12 @@ $result = Process::run('ls -la');
 return $result->output();
 ```
 
+## Test Performance
+
+テストのパフォーマンスが表示できるようになりました。 `php artisan test --profile` で実行したときに遅いテスト順で表示してくれます。
+
+see : https://laravel-news.com/laravel-10-profile-option
+
 ## 実装変更に伴う新機能
 
 `DB::raw` が強化されました。説明が難しいので [該当の pull-request -- github.com](https://github.com/laravel/framework/pull/44784) と [ツイート -- twitter.com](https://twitter.com/tobias_petry/status/1622577764682407936)を見てください。
@@ -76,7 +99,7 @@ DB::table('table')->select(new Alias(new Colalesce(['user', 'admin']), 'count'))
 
 ## composer.json のアップデート :: Impact:High
 
-**composer.json** の下記２箇所を変更してください。
+**composer.json** の下記の箇所を変更してください。
 
 1. `"laravel/framework": "^10.0"`
 2. `"spatie/laravel-ignition": "^2.0"`
@@ -84,6 +107,12 @@ DB::table('table')->select(new Alias(new Colalesce(['user', 'admin']), 'count'))
 安定リリースを保つため下記も変更します。
 
 1. `"minimum-stability": "stable",`
+
+なおオプションで PHPUnit 10 を使うときは下記のような変更をしてください。
+
+1. **phpunit.xml** の **<coverage>** のパラメータにある *processUncoveredFiles* を削除してください。
+2. **composer.json** の `"nunomaduro/collision": "^7.0"`
+3. **composer.json** の `"phpunit/phpunit": "^10.0"`
 
 
 ### 他の composer.json の変更点
@@ -180,4 +209,10 @@ see : [Mocking -- laravel.com](https://laravel.com/docs/10.x/mocking)
 Validation Rule にてクロージャーを渡したときに、第三引数の `$fail` は Object を返すクロージャーになりました。
 
 （この機能自体、初めて知ったからなんだコレ感。）
+
+## 多言語ディレクトリの変更
+
+新規インストール時に **lang** ディレクトリは作成されますが、このバージョンから `php artisan lang:publish` を実行しないと作成されなくなりました。
+
+
 
