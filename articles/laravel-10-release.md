@@ -8,6 +8,8 @@ published: true
 
 ほぼ一年ぶりのメジャーアップデートである Laravel10 がリリースされます。2023年の Q1 とのことで現時点（2023/02/09）はまだリリースされてません。[多分来週 -- twitter.com](https://twitter.com/taylorotwell/status/1622997899654176769)とテイラーさんは言っているので、2023/02/10日以降とか…？。
 
+追記： [2/14 あたりだそうです ](https://twitter.com/taylorotwell/status/1625181882739572736) GMT/UTC とかの都合で曖昧。だいたいそこらへん。
+
 そんなわけで、このメモ書きも気がついたら増えていきます。一応公式ドキュメントは公開されたので、これも公開。
 
 なお [名前的に Laravel X とは呼ばないでね --twitter.com/taylortwell](https://twitter.com/taylorotwell/status/1620807927715217409) って言ってます
