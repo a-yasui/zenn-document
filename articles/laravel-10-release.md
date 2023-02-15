@@ -20,6 +20,7 @@ published: true
 
 # see:
 
+- [Laravel 10 -- laravel-news.com](https://laravel-news.com/laravel-10)
 - [Upgrade Guid -- laravel.com](https://laravel.com/docs/10.x/upgrade)
 - [A Look at What's Coming to Laravel 10 -- laravel-news.com](https://laravel-news.com/laravel-10)
 - [Laravel 10 Application Skeleton Code Will Have Native Type Declarations -- laravel-news.com](https://laravel-news.com/laravel-10-type-declarations)
