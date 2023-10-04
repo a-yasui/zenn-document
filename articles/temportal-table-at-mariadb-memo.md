@@ -561,13 +561,13 @@ section DELETE section
 
 section UPDATE section
 古予約            :done,  d1, 2022-09-01, 2022-09-10
+一年予約          :active, dy_1, 2022-10-10, 2023-01-01
 一年予約_original :active, dy_o, 2023-01-01, 2023-10-01
+一年予約          :active, dy_2, 2023-10-01, 2023-10-10
 半年予約_original :active, dh_o, 2023-03-01, 2023-09-01
+前突入            :active, da, 2022-12-01, 2023-01-01
 前突入_original   :active, da_o, 2023-01-01, 2023-06-01
 後突入_original   :active, db_o, 2023-09-01, 2023-10-01
-一年予約          :active, dy_1, 2022-10-10, 2023-01-01
-一年予約          :active, dy_2, 2023-10-01, 2023-10-10
-前突入            :active, da, 2022-12-01, 2023-01-01
 後突入            :active, db, 2023-10-01, 2023-11-04
 
 ```
