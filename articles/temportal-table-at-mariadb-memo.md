@@ -3,7 +3,7 @@ title: "Temportal Table at mariadb のメモ書き"
 emoji: "🪭"
 type: "tech" # tech: 技術記事 / idea: アイデア
 topics: ['mariadb']
-published: false
+published: true
 ---
 
 [Temportal Table -- mariadb.com](https://mariadb.com/kb/en/temporal-tables/) のメモ書き。
@@ -22,7 +22,7 @@ Temportal Table は主にデータの変更履歴を管理するための機能�
 
 # 三行で
 
-1. SystemVersioningTable は版として使う場合に有効。
+1. SystemVersioningTable は全体のデータをバージョン（版）として使う場合に有効。ただまだよくわかってない。
 2. ApplicationTimePeriod は WITHOUT OVERLAP を使うと面白い使い方ができる。
 3. Bitemporal はどうしようこれという感じがある。
 
@@ -33,7 +33,7 @@ Temportal Table は主にデータの変更履歴を管理するための機能�
 この機能は、テーブルの作成時に機能を有効することができます。そして、途中から有効にする事もできます。この機能の副作用として TRUNCATE は動きません。^[ただしこれは MariaDB 10.4.5 以上のバージョンに限ります。それより前は消してしまいます。]
 
 :::message
-SQL 2011 では START/END のカラムが必要ですが、Maria DB では無くても動きます。他のデータベースに移行する事を考える時は必要になると思います。
+SQL:2011 では START/END のカラムが必要ですが、Maria DB では無くても動きます。他のデータベースに移行する事を考える時は必要になると思います。
 
 ただ注意が必要なのが START/END のカラムを書かずに作成した場合、 `ROW_START`/`ROW_END` の隠しカラムみたいなのを持ちます。名前が重複しないように注意をしたほうが良いです。
 
