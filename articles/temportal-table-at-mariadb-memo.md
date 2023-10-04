@@ -623,10 +623,108 @@ MariaDB [sys_temporal]> select * from books;
 9 rows in set (0.001 sec)
 ```
 
-Delete 時と似たように、指定期間のデータが影響をウケる。
+Delete 時と似たように、指定期間のデータが影響をうける。これは指定期間（2023-01-01〜2023-10-01）の範囲のレコードに、nameの後に `_original` を追加する。
 
+1. 古予約はかわらない。
+2. 一年予約_original と２つの 一年予約の３つにわかれる。指定期間の前側を前期間・後側を後期間と表記する。
+	1. 前期間（2022-10-10〜2023-01-01）は「一年予約」として変わらずに存在する。
+	2. 変更期間（2023-01-01〜2023-10-01）は「一年予約_original」になる。
+	3. 後期間（2023-10-01〜2023-10-10）は「一年予約」として変わらずに存在する。
+3. 半年予約は全期間（2023-03-01〜2023-09-01）は変更対象なので「半年予約_original」になった。
+4. 前突入（2022-12-01〜2023-06-01）は２つに分かれる。
+	1. （2022-12-01〜2023-01-01）は変わらない。
+	2. （2023-01-01〜2023-06-01）は変更され「前突入_original」になる。
+5. 後突入（2023-09-01〜2023-11-04）は前突入と同じように２つに分かれる。
+	1. （2023-09-01〜2023-10-01）は変更対象なので「後突入_original」になる。
+	2. （2023-10-01〜2023-11-04）は変わらない。
+
+UPDATE は、３つの制約を持つ。
+
+1. ２つの Time Period を変更することはできない
+2. The operation cannot reference period values in the SET expression（よくわからん）
+3. `FROM...TO` 構文は書かなければならない
+
+### WITHOUT OVERLAPS
+
+[MariaDB 10.5.3 以降](https://mariadb.com/kb/en/mariadb-1053-release-notes/)で使える機能です。アプリケーションの時間帯が重複しないように指定したインデックスを作成できるようになる。
+
+未指定だとこんな感じ。これで問題なのは、guest_name:Cochise と guest_name:Eusebius の予約がかぶってしまっている事。
+
+```sql
+MariaDB [sys_temporal]> CREATE OR REPLACE TABLE rooms (
+    ->  room_number INT,
+    ->  guest_name VARCHAR(255),
+    ->  checkin DATE,
+    ->  checkout DATE,
+    ->  PERIOD FOR p(checkin,checkout)
+    ->  );
+Query OK, 0 rows affected (0.026 sec)
+
+MariaDB [sys_temporal]> INSERT INTO rooms VALUES 
+    ->  (1, 'Regina', '2020-10-01', '2020-10-03'),
+    ->  (2, 'Cochise', '2020-10-02', '2020-10-05'),
+    ->  (1, 'Nowell', '2020-10-03', '2020-10-07'),
+    ->  (2, 'Eusebius', '2020-10-04', '2020-10-06');
+Query OK, 4 rows affected (0.003 sec)
+Records: 4  Duplicates: 0  Warnings: 0
+```
+
+*WITHOUT OVERLAPS* を使ったら制約で弾くことができる。
+
+```sql
+MariaDB [sys_temporal]> CREATE OR REPLACE TABLE rooms (
+    ->  room_number INT,
+    ->  guest_name VARCHAR(255),
+    ->  checkin DATE,
+    ->  checkout DATE,
+    ->  PERIOD FOR p(checkin,checkout),
+    ->  UNIQUE (room_number, p WITHOUT OVERLAPS)
+    ->  );
+Query OK, 0 rows affected (0.007 sec)
+
+MariaDB [sys_temporal]> INSERT INTO rooms VALUES 
+    ->  (1, 'Regina', '2020-10-01', '2020-10-03'),
+    ->  (2, 'Cochise', '2020-10-02', '2020-10-05'),
+    ->  (1, 'Nowell', '2020-10-03', '2020-10-07'),
+    ->  (2, 'Eusebius', '2020-10-04', '2020-10-06');
+ERROR 1062 (23000): Duplicate entry '2-2020-10-06-2020-10-04' for key 'room_number'
+MariaDB [sys_temporal]> select count(*) from rooms;
++----------+
+| count(*) |
++----------+
+|        0 |
++----------+
+1 row in set (0.003 sec)
+
+```
 
 # Bitemporal Table
+
+Bitemporal は System Versioning Table と Application Time Periods の複合テーブル。どういう時に使えるか不明だけど、できちゃうものと言う感じ。
+
+```sql
+CREATE TABLE test.t3 (
+   date_1 DATE,
+   date_2 DATE,
+   row_start TIMESTAMP(6) AS ROW START INVISIBLE,
+   row_end TIMESTAMP(6) AS ROW END INVISIBLE,
+   PERIOD FOR application_time(date_1, date_2),
+   PERIOD FOR system_time(row_start, row_end))
+WITH SYSTEM VERSIONING;
+```
+
+:::message
+注意事項として、`DELETE FOR PORTION` や `UPDATE FOR PORTION` が使えなくなる。
+
+```sql
+DELETE FROM test.t3 
+FOR PORTION OF system_time 
+    FROM '2000-01-01' TO '2018-01-01';
+ERROR 42000: You have an error in your SQL syntax; check the manual that corresponds 
+  to your MariaDB server version for the right syntax to use near
+  'of system_time from '2000-01-01' to '2018-01-01'' at line 1
+```
+:::
 
 # 試し
 
