@@ -530,7 +530,7 @@ MariaDB [sys_temporal]> select * from books;
 
 ```
 
-ここまでの books テーブルの状態を可視化する。
+ここまでの books テーブルの状態を可視化する。ついでに DELETE時・UPDATE時のデータも書いている。
 
 ```mermaid
 gantt
@@ -538,13 +538,32 @@ dateFormat  YYYY-MM-DD
 title books テーブルの状況
 excludes weekdays 2023-10-01
 
-section A section
-古い予約 :done,   d1, 2022-09-01, 2022-09-10
+section 元データ
+古予約  :done,   d1, 2022-09-01, 2022-09-10
 一年予約 :active, dy, 2022-10-10, 2023-10-10
 半年予約 :        dh, 2023-03-01, 2023-09-01
 前突入   :        da, 2022-12-01, 2023-06-01
 後突入   :        db, 2023-09-01, 2023-11-04
 削除変更予定: active, ddd, 2023-01-01, 2023-10-01
+
+section DELETE section
+古予約  :done,   d1, 2022-09-01, 2022-09-10
+一年予約 :active, dy, 2022-10-10, 2023-01-01
+前突入   :active, da, 2022-12-01, 2023-01-01
+後突入   :active, db, 2023-10-01, 2023-11-04
+一年予約 :active, dy, 2023-10-01, 2023-10-10
+
+section UPDATE section
+古予約            :done,  d1, 2022-09-01, 2022-09-10
+一年予約_original :active, dy_o, 2023-01-01, 2023-01-01
+半年予約_original :active, dh_o, 2023-03-01, 2023-09-01
+前突入_original   :active, da_o, 2023-01-01, 2023-06-01
+後突入_original   :active, db_o, 2023-09-01, 2023-10-01
+一年予約          :active, dy_1, 2022-10-10, 2023-01-01
+一年予約          :active, dy_2, 2023-10-01, 2023-10-10
+前突入            :active, da, 2022-12-01, 2023-01-01
+後突入            :active, db, 2023-10-01, 2023-11-04
+
 ```
 
 ### データの削除
