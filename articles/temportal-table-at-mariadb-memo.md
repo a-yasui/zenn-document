@@ -20,6 +20,12 @@ Temportal Table は主にデータの変更履歴を管理するための機能�
 
 個人的にはバックアップを取ったときのデータ容量とか内容がどうなるんやという疑問があるのでメモ書き。
 
+# 三行で
+
+1. SystemVersioningTable は版として使う場合に有効。
+2. ApplicationTimePeriod は WITHOUT OVERLAP を使うと面白い使い方ができる。
+3. Bitemporal はどうしようこれという感じがある。
+
 # System Versioning Tables
 
 システムデータを使って、テーブルのデータを操作した履歴や、テーブル自体の操作履歴を保持します。
