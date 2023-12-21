@@ -37,4 +37,15 @@ Laravel 6 以前の昔からあるアプリケーションを 8 以上にした�
 
 	`database/factories` を使っており古いFactoryが溜まってるはずです。それを `database/legacy-factories` に変えてやります。新しいクラス化されてる Factory が `database/factories` に追加されてく形なはずです。空のディレクトリを git add はできないので、 `.keep` とか置いておくといいと思います。
 
+3. AppServiceProvider に次の数行を追加。これ無いとコケる。忘れてた。
+
+```php
+        // 古い方の factories は legacy-factories に移動したので、追従変更させる
+        $this->app->singleton(Factory::class, function ($app) {
+            return Factory::construct(
+                $app->make(Generator::class), $this->app->databasePath('legacy-factories')
+            );
+        });
+```
+
 3. 書き換えた後 `composer install --dev` とかをすればいいと思います。
