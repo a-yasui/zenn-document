@@ -40,12 +40,15 @@ Laravel 6 以前の昔からあるアプリケーションを 8 以上にした�
 3. AppServiceProvider に次の数行を追加。これ無いとコケる。忘れてた。
 
 ```php
+	public function boot()
+	{
         // 古い方の factories は legacy-factories に移動したので、追従変更させる
         $this->app->singleton(Factory::class, function ($app) {
             return Factory::construct(
                 $app->make(Generator::class), $this->app->databasePath('legacy-factories')
             );
         });
+    }
 ```
 
 3. 書き換えた後 `composer install --dev` とかをすればいいと思います。
