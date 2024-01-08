@@ -3,7 +3,7 @@ title: "NTFSでフォーマットしたUSBメモリーをMacで読み書きす�
 emoji: "📘"
 type: "tech" # tech: 技術記事 / idea: アイデア
 topics: ['mac']
-published: false
+published: true
 ---
 
 最近の外部SSDが小さくて便利です。安いものから高いものまで末広がりだけど、まぁメーカー依存な部分もあります。それはともかく、Windows で NTFS でフォーマットした外部SSDをMacで読み取ることは、標準機能で可能です。しかし書き込みはできません。今回は書き込みもしたかったですので、それのインストールしたメモ書きです。
@@ -72,6 +72,8 @@ Password:
 ```
 
 シェルスクリプトを作って `mount_ntfs` を作ったほうが良いかもしれない。こんな感じのもの : [ntfs-3g.rb github.com/fasterthanlime/homebrew-mingw](https://github.com/fasterthanlime/homebrew-mingw/blob/master/Library/Formula/ntfs-3g.rb#L49)
+
+マウントポイントを指定したら再マウントする感じのほうが楽かもなぁ
 
 ```shell
 #!/bin/bash
