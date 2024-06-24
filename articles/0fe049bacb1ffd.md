@@ -79,34 +79,9 @@ mysql    | 2024-06-24T07:13:16.300948Z 0 [System] [MY-010910] [Server] /usr/sbin
 
 この **docker-compose.yaml** があるディレクトリの場所が `hogemax-prj` なので、 `hogemax-prj-mysqldata` を指定しなければならない。
 
-## 変更後
+## ただしい対処
 
-```yaml
-version: "3.8"
-services:
-  mysql:
-    image: mysql:8.0
-    restart: always
-    container_name: mysql
-    ports:
-      - "3306:3306"
-    volumes:
-      - mysql_data:/var/lib/mysql
-      - ./mysql/init.d:/docker-entrypoint-initdb.d
-    environment:
-      MYSQL_ROOT_PASSWORD: password
-      MYSQL_DATABASE: hogemax
-      MYSQL_USER: homestead
-      MYSQL_PASSWORD: secret
-      TZ: Asia/Tokyo
-    networks:
-      - my-local-net
 
-volumes:
-  mysql_data:
-    driver: local
-networks:
-  my-local-net:
-    external: true
+1. `docker volume rm hogemax-prj-mysqldata`
+2. `docker compose up -d`
 
-```
