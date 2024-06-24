@@ -10,6 +10,10 @@ published: true
 
 docker compose 環境で mysql:8.0 を動かしたときに `'./ibdata1' could not be found in the doublewrite buffer.` とか言われて動かなくなるヤツの対処。
 
+# 結論
+
+docker-compose の場合、volume 名が `volumes` に書いた物ではなく、`docker-compose.yaml` のディレクトリ名 + `volumes` に書いた名前になる。削除するときは `docker volume ls` で確認すること。
+
 # 環境
 
 - ホスト: Mac OS Sonoma, (Intel/M3)
@@ -66,9 +70,14 @@ mysql    | 2024-06-24T07:13:16.300948Z 0 [System] [MY-010910] [Server] /usr/sbin
 
 # 対処
 
-volume 名を `mysqldata` から `mysql_data` に変更したら動いた。
+1. `docker volume rm mysqldata`
+2. `docker compose up` で起動 **→** 失敗
+3. `docker volume rm mysqldata`
+4. volume 名を `mysqldata` から `mysql_data` に変更したら動いた。
 
-原因不明。
+**↑これが間違い**
+
+この **docker-compose.yaml** があるディレクトリの場所が `hogemax-prj` なので、 `hogemax-prj-mysqldata` を指定しなければならない。
 
 ## 変更後
 
