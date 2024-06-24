@@ -1,5 +1,5 @@
 ---
-title: "Docker compose で './ibdata1' could not be found in the doublewrite buffer."
+title: "Docker compose で mysql:8.0 の初期化失敗"
 emoji: "🐳"
 type: "tech" # tech: 技術記事 / idea: アイデア
 topics: ["mysql", "docker"]
@@ -70,3 +70,34 @@ volume 名を `mysqldata` から `mysql_data` に変更したら動いた。
 
 原因不明。
 
+## 変更後
+
+```yaml
+version: "3.8"
+services:
+  mysql:
+    image: mysql:8.0
+    restart: always
+    container_name: mysql
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./mysql/init.d:/docker-entrypoint-initdb.d
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: hogemax
+      MYSQL_USER: homestead
+      MYSQL_PASSWORD: secret
+      TZ: Asia/Tokyo
+    networks:
+      - my-local-net
+
+volumes:
+  mysql_data:
+    driver: local
+networks:
+  my-local-net:
+    external: true
+
+```
