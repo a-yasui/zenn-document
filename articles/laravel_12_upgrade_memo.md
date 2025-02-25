@@ -14,6 +14,25 @@ Laravel 12 Upgrade Memo.
 
 - see : https://laravel.com/docs/12.x/upgrade
 - see : https://github.com/laravel/laravel/releases/tag/v12.0.0
+- see : https://laravel-news.com/laravel-12
+
+# 変更点
+
+今回からのスターターキットには、これらが含まれます。
+
+- Social authentication
+- Passkey authentation
+- Email-based auth
+- SSO with WorkOS
+
+## PHP8.2 以上
+
+PHP8.2 ~ PHP8.4 が動作環境となります。これは Laravel 11 から変わりません。
+
+## メンテナンス期間
+
+- Bugfix: August 13th, 2026
+- Security Fix: February 24th, 2027
 
 # Upgrade 方法
 
