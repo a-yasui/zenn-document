@@ -3,7 +3,7 @@ title: "Laravel 12 Upgrade Memo"
 emoji: "🔖"
 type: "tech" # tech: 技術記事 / idea: アイデア
 topics: ["laravel", "php"]
-published: false
+published: true
 ---
 
 Laravel 12 Upgrade Memo.
