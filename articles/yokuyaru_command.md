@@ -36,8 +36,16 @@ published: true
   find の代替え。速い。
 - `autojump` https://github.com/wting/autojump
   cd コマンドでディレクトリ移動履歴を保持する。 `j` コマンドを使えば履歴から一番よく使ったディレクトリにジャンプする。一番使う。
-- `glow` https://github.com/charmbracelet/glow
-  markdown を cli で良い感じに表示させる
+- `htop` https://htop.dev/
+  top コマンドの表示を派手にした感じのやつ。
+- `eza` https://github.com/eza-community/eza
+  `ls` コマンドを色分けしたりアイコン付けたりして派手にする。これのために Nerd Fonts を入れる。
+- `Nerd Fonts` https://github.com/ryanoasis/nerd-fonts
+  空いてる文字コード部分に何か知らのアイコンを入れてるフォント群。個人的に使ってるのは [SourceCode -- formulae.brew.sh](https://formulae.brew.sh/cask/font-sauce-code-pro-nerd-font) 
+- `dust` https://github.com/bootandy/dust
+  指定フォルダーのディスク使用量を可視化します
+- `duf` https://github.com/muesli/duf
+  ディスクデバイスの使用状況を良い感じに可視化します。
 
 ## Zsh の設定 -- add-zsh-hook
 
@@ -53,10 +61,16 @@ function showReadme() {
 
 ## Zsh の alias
 
-マージしたので不要になったブランチを一気に消すコマンドです。
+1. マージしたので不要になったブランチを一気に消すコマンドです。
 
 ```zsh
 alias -- git-cleanup-branches='git branch --merged | grep -vE '^\*|develop|main|master' | xargs git branch -d'
+```
+
+2. `ls` で　`eza --icons=auto` にして、良い感じに見やすくしてます。
+
+```zsh
+alias -- ls='eza --icons=auto'
 ```
 
 ## ちょっと微妙だった系
