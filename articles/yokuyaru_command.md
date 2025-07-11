@@ -27,7 +27,7 @@ published: true
 - `tmux` https://github.com/tmux/tmux/wiki
   terminal のセッション管理。
 - `mosh` https://github.com/mobile-shell/mosh
-  ssh だと tcp 接続で回線が切れたら終わるけど、これは回線が切れても復活したら再接続をする。あたしは tmux を併用する。
+  ssh だと tcp 接続を使っているので回線が切れたら終わるけど、これは udp 接続を使っていて、ネットワークの回線が不安定な所でも使えるようにするのが目的です。ですので、回線が切れても、回線接続が復帰したら再接続をします。ただ terminal session は切れてしまうので、あたしは tmux を併用してます。
 - `glow` https://github.com/charmbracelet/glow
   markdown を良い感じにターミナルで表示するやつ
 - `rg` https://github.com/BurntSushi/ripgrep
