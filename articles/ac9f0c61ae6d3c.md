@@ -3,7 +3,7 @@ title: "NVIDIA-SMI has failed because it couldn’t communicate with the NVIDIA 
 emoji: "🐈"
 type: "tech" # tech: 技術記事 / idea: アイデア
 topics: [ 'ubuntu','linux','nvidia' ]
-published: false
+published: true
 ---
 
 Nvidia 1060 が刺さってるマシンがありまして、久しぶりに `sudo apt upgrade -y` をしたら `nvidia_smi` が "NVIDIA-SMI has
