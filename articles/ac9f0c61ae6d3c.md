@@ -1,5 +1,5 @@
 ---
-title: "NVIDIA-SMI has failed because it couldn’t communicate with the NVIDIA driver. Make sure that the latest NVIDIA driver is installed and running. "
+title: "Ubuntu 24.04 に Nvidia Driver を再インストールした"
 emoji: "🐈"
 type: "tech" # tech: 技術記事 / idea: アイデア
 topics: [ 'ubuntu','linux','nvidia' ]
@@ -50,11 +50,16 @@ NVIDIA-SMI has failed because it couldn’t communicate with the NVIDIA driver. 
 - see: https://forums.developer.nvidia.com/t/fc42-kernel-6-14-1-570-133-07-fails-to-compile-modules/330104
 - see: https://askubuntu.com/questions/1553090/nvidia-driver-470-not-compiling-properly-on-ubuntu-24-04-after-update
 
-対処としては色々やり過ぎたためよくわからないが、とりあえず Linux Kernel を 6.11 にダウングレード。
+対処としては色々やり過ぎたためよくわからない事になっている。とりあえず Linux Kernel を 6.11 にダウングレード & Secure Boot で引っかかってたので MOK を登録した。
+
+## 参考
+
+- [https://zenn.dev/hagifly/articles/16ae709805a48c](CUDA をインストールせずに NVIDIA ドライバーをインストールする方法 -- zenn.dev)
+- [https://takayama-rado.com/articles/update_nvidia_0.html](Ubuntuの更新ついでにNVIDIAのドライバを更新しようとしたらハマった話 -- takayama-rado.com)
 
 # AI にまとめさせた物
 
-以下は gpt-oss:20b にまとめさせた物。時間かかったね…
+以下は gpt-oss:20b にまとめさせた物。色々やり過ぎたため、やったほうも上手くmemoを取れてなかった。出力に時間かかったね…
 
 ## NVIDIA 555 ドライバ導入 ― 最終作業報告書（正式版）
 
