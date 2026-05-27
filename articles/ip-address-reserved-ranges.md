@@ -36,7 +36,7 @@ IPv6 まわりはちょっと追いきれてない。
 | 224.0.0.0 ~ 239.255.255.255 (224.0.0.0/4) | reserved for multicast addresses | RFC 3171 |
 | 240.0.0.0/4  | reserved (former Class E network) | RFC 1700 |
 | 255.255.255.255/32 | the limited broadcast address (limited to all other nodes on the LAN) | RFC 919, rfc8190 |
-| 0.0.0.0 |  routing context means the default route (to "the rest of" the internet) | RFC 1700 |
+| 0.0.0.0 | routing context means the default route (to "the rest of" the internet) | RFC 1700 |
 | 0.0.0.0 | the context of firewalls means "all addresses of the local machine" | RFC 1700 |
 
 
@@ -49,6 +49,7 @@ IPv6 まわりはちょっと追いきれてない。
 | 64:ff9b::/96 | IPv4-IPv6 Translat | RFC6052 |
 | ::ffff:0:0/96 | IPv4-mapped Address | RFC4291 |
 | 100::/64 | Discard-Only Address Block | RFC6666 |
+| 2000::/3 | Global Unicast Address / 先頭3bitが000の物は Global unicast addresses | https://datatracker.ietf.org/doc/html/rfc3513#section-2.5.4 |
 | 2001::/23 | IETF Protocol Assignments / Unless allowed by a more specific allocation | RFC2928 |
 | 2001::/32 | TEREDO[[ Teredo とは、複数段の IPv4 NAT 環境の背後にある端末が、UDP を用いたトンネリングによって IPv6 接続を確立する仕組み]] | RFC4380 |
 | 2001:2::/48 | Benchmarking | RFC5180 |
